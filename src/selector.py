@@ -1,4 +1,5 @@
 # selector.py
+from peon import Peon
 
 class SelectorMovimiento:
     def __init__(self, tablero):
