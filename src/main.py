@@ -42,8 +42,8 @@ if __name__ == "__main__":
     peones_negros = [Peon('negro', 1, i) for i in range(8)]
 
     # Crear torres blancas y negras
-    torres_blancas = [Torre('blanca', 7, 0), Torre('blanca', 7, 7)]
-    torres_negras = [Torre('negra', 0, 0),Torre('negra', 0, 7)]
+    torres_blancas = [Torre(imagen_torre_blanca, 7, 0), Torre(imagen_torre_blanca, 7, 7)]
+    torres_negras = [Torre(imagen_torre_negra, 0, 0),Torre(imagen_torre_negra, 0, 7)]
 
     # Agregar peones al tablero
     for peon in peones_blancos:
@@ -107,7 +107,7 @@ if __name__ == "__main__":
                 elif isinstance(pieza, Torre):
                     x = columna * 64
                     y = fila * 64
-                    if pieza.color == 'blanco':
+                    if pieza.color == imagen_torre_blanca:
                         VENTANA.blit(imagen_torre_blanca, (x, y))
                     else:
                         VENTANA.blit(imagen_torre_negra, (x, y))
