@@ -13,12 +13,12 @@ class Torre:
             if nueva_fila == self.fila:  # Movimiento horizontal
                 paso = 1 if nueva_columna > self.columna else -1
                 for columna in range(self.columna + paso, nueva_columna, paso):
-                    if tablero[self.fila][columna] is not None:
+                    if tablero.obtener_casilla(self.fila, columna) is not None:
                         return False
             else:  # Movimiento vertical
                 paso = 1 if nueva_fila > self.fila else -1
                 for fila in range(self.fila + paso, nueva_fila, paso):
-                    if tablero[fila][self.columna] is not None:
+                    if tablero.obtener_casilla(fila, self.columna) is not None:
                         return False
             return True
         return False

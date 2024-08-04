@@ -5,6 +5,7 @@ from peon import Peon
 from torre import Torre
 from selector import SelectorMovimiento
 from variables import ubicaciones
+from caballo import Caballo
 
 # Configuración de la ventana
 ANCHO, ALTO = 512, 512  # Ajusta el tamaño de la ventana al tamaño del tablero de ajedrez
@@ -21,6 +22,8 @@ imagen_peon_blanco = pygame.image.load(ubicaciones.ref3)
 imagen_peon_negro = pygame.image.load(ubicaciones.ref4)
 imagen_torre_blanca = pygame.image.load(ubicaciones.ref5)
 imagen_torre_negra = pygame.image.load(ubicaciones.ref6)
+imagen_caballo_blanco = pygame.image.load(ubicaciones.ref7)
+imagen_caballo_negro = pygame.image.load(ubicaciones.ref8)
 
 # Redimensiona las imágenes a 64x64 píxeles
 imagen_colorA = pygame.transform.scale(imagen_colorA, (64, 64))
@@ -29,6 +32,8 @@ imagen_peon_blanco = pygame.transform.scale(imagen_peon_blanco, (52, 62))
 imagen_peon_negro = pygame.transform.scale(imagen_peon_negro, (52, 62))
 imagen_torre_blanca = pygame.transform.scale(imagen_torre_blanca, (52,62))
 imagen_torre_negra = pygame.transform.scale(imagen_torre_negra, (52,62))
+imagen_caballo_blanco = pygame.transform.scale(imagen_caballo_blanco, (52,62))
+imagen_caballo_negro = pygame.transform.scale(imagen_caballo_negro, (52,62))
 
 if __name__ == "__main__":
     mi_tablero = Tablero()
@@ -45,6 +50,10 @@ if __name__ == "__main__":
     torres_blancas = [Torre(imagen_torre_blanca, 7, 0), Torre(imagen_torre_blanca, 7, 7)]
     torres_negras = [Torre(imagen_torre_negra, 0, 0),Torre(imagen_torre_negra, 0, 7)]
 
+    # Crear Caballos blancos y negros
+    caballos_blancos = [Caballo(imagen_caballo_blanco, 7, 1), Caballo(imagen_caballo_blanco, 7, 6)]
+    caballos_negros = [Caballo(imagen_caballo_negro, 0, 1), Caballo(imagen_caballo_negro, 0, 6)]
+
     # Agregar peones al tablero
     for peon in peones_blancos:
         mi_tablero.asignar_casilla(peon.fila, peon.columna, peon)
@@ -58,6 +67,13 @@ if __name__ == "__main__":
 
     for torre in torres_negras:
         mi_tablero.asignar_casilla(torre.fila, torre.columna, torre)
+
+    # Agregar caballos al tablero
+    for caballo in caballos_blancos:
+        mi_tablero.asignar_casilla(caballo.fila, caballo.columna, caballo)
+
+    for caballo in caballos_negros:
+        mi_tablero.asignar_casilla(caballo.fila, caballo.columna, caballo)
 
     # Inicializar selector de movimiento
     selector_mov = SelectorMovimiento(mi_tablero)
@@ -111,5 +127,12 @@ if __name__ == "__main__":
                         VENTANA.blit(imagen_torre_blanca, (x, y))
                     else:
                         VENTANA.blit(imagen_torre_negra, (x, y))
+                elif isinstance(pieza, Caballo):
+                    x = columna * 64
+                    y = fila * 64
+                    if pieza.color == imagen_caballo_blanco:
+                        VENTANA.blit(imagen_caballo_blanco, (x, y))
+                    else:
+                        VENTANA.blit(imagen_caballo_negro, (x, y))
 
         pygame.display.flip()

@@ -11,3 +11,6 @@ Se agregaron las torres al juego, sin embargo en este segundo commit, se encuent
 
 --------------------------------------------------------------------------------------------------------------
 Se corrigio el error de visualización de las torres. Commit menor.
+--------------------------------------------------------------------------------------------------------------
+Se trato de corregir el movimiento de las torres sin exito, ademas se integro el archivo de caballo.py donde se integra la logica de esta pieza.
+Igual se agregaron a main.py los codigos correpondientes para caballo.py. Aun no se crean los sprints para los caballos.
